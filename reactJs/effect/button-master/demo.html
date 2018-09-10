@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>水波纹按钮</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head>
+<link href="./ripple.css" rel="stylesheet">
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .demo-div {
+        display: block;
+        position: relative;
+        margin: 0 auto;
+        width: 50%;
+        height: 100px;
+        border: 1px solid #000;
+        overflow: hidden;
+    }
+    
+    button {
+        margin: 10px 10px;
+        position: relative;
+        background: white;
+        border: 1px solid #eee;
+        width: 80px;
+        height: 40px;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .yuan {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 30px;
+        margin: 10px 10px;
+        border-radius: 50%;
+        background-color: blueviolet;
+        overflow: hidden;
+    }
+    
+    button:hover {
+        background-color: rgba(0, 0, 0, 0.1)
+    }
+</style>
+
+<body>
+    <div class="md-div demo-div"></div>
+    <button class="md-button">文字</button>
+    <div class="md-yuan yuan"></div>
+    <div class="yuan test"></div>
+    <div class="yuan test"></div>
+</body>
+
+<script src="./ripple.js"></script>
+<script>
+    let ripple1 = new Ripple({
+        cName: 'md-div',
+        /* r: 20,*/
+        time: '0.65s',
+        color: 'rgba(0,0,0,0.1)',
+        MaxNum: 6
+    })
+    new Ripple({
+        cName: 'md-button',
+        r: 16,
+        color: 'rgba(0,0,0,0.1)',
+        time: '0.5s',
+        MaxNum: 5
+    })
+    new Ripple({
+        cName: 'md-yuan',
+        color: 'rgba(0,0,0,0.1)',
+        time: '0.5s',
+        MaxNum: 3,
+        center: true,
+        zIndex: 2
+    })
+
+    window.addEventListener('resize', function(event) {
+        ripple1.refresh();
+        console.log('resize')
+    })
+</script>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>babel ES6转化ES5</title>
+    <script src="./node_modules/@babel/standalone/babel.js"></script>
+    <script src="./node_modules/react/umd/react.development.js"></script>
+    <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <!-- <script> 
+        const input =  "const get = () => 'hello world' ;console.log(get())";
+        const output = Babel.transform(input,{presets:['es2015']}).code;
+        window.eval(output)
+    </script> -->
+    <div id="id">
+
+    </div>
+    <script type="text/babel">
+
+        const element = (
+            <div>
+                <ul>
+                    {[
+                        <li key="1">ni</li>,
+                        <li key="2">shi</li>,
+                        <li key="3">shui</li>
+                    ]}
+                </ul>
+                <ul>
+                    {
+                        (()=>{
+                            return [
+                                <li key="1">ni</li>,
+                                <li key="2">shi</li>,
+                                <li key="3">shui</li>
+                            ]
+                        })()
+                    }
+                </ul>
+            </div>
+        )
+
+        // ReactDOM.render(
+        //     <h1>直接写这么爽的么</h1>,
+        //     document.getElementById('id')
+        // )
+        ReactDOM.render(
+            element,
+            document.getElementById('id')
+        )
+    </script>
+
+
+</body>
+</html>
